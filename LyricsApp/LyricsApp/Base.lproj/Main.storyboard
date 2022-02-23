@@ -117,6 +117,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Qy6-ZP-caa"/>
+                    <connections>
+                        <outlet property="artistNameText" destination="YpP-0x-fJy" id="xrI-St-LA1"/>
+                        <outlet property="searchButton" destination="NAb-SI-dFo" id="5FA-8i-A52"/>
+                        <outlet property="songNameText" destination="RL2-wR-bII" id="lSf-1k-qW2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wiT-N9-TFs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -140,7 +145,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="60.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Searching..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XIt-qk-ksm" userLabel="LyricsLabel">
-                                                        <rect key="frame" x="10" y="20" width="394" height="60.5"/>
+                                                        <rect key="frame" x="10" y="0.0" width="394" height="40.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -149,9 +154,9 @@
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstItem="XIt-qk-ksm" firstAttribute="leading" secondItem="3JW-Ij-uXV" secondAttribute="leading" constant="10" id="AoN-xw-lKF"/>
-                                                    <constraint firstItem="XIt-qk-ksm" firstAttribute="height" secondItem="3JW-Ij-uXV" secondAttribute="height" id="lrs-bB-jOt"/>
+                                                    <constraint firstAttribute="bottom" secondItem="XIt-qk-ksm" secondAttribute="bottom" constant="20" id="pmV-ft-uZx"/>
                                                     <constraint firstAttribute="trailing" secondItem="XIt-qk-ksm" secondAttribute="trailing" constant="10" id="why-BH-P6J"/>
-                                                    <constraint firstItem="XIt-qk-ksm" firstAttribute="top" secondItem="3JW-Ij-uXV" secondAttribute="top" constant="20" id="x1T-lf-H0h"/>
+                                                    <constraint firstItem="XIt-qk-ksm" firstAttribute="top" secondItem="3JW-Ij-uXV" secondAttribute="top" id="x1T-lf-H0h"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
