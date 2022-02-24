@@ -20,8 +20,8 @@ class SearchViewController: UIViewController {
     }
 
     @IBAction func searchLyricsTapped(_ sender: Any) {
-        LyricsController.shared.artistName = artistNameText.text!.lowercased()
-        LyricsController.shared.songTitle = songNameText.text!.lowercased()
+        LyricsController.shared.artistName = artistNameText.text!
+        LyricsController.shared.songTitle = songNameText.text!
     }
     
     
@@ -36,5 +36,9 @@ class SearchViewController: UIViewController {
     func updateSaveButtonState() {
         let shouldEnableSaveButton = ((artistNameText.text?.isEmpty == false) && (songNameText.text?.isEmpty == false))
         searchButton.isEnabled = shouldEnableSaveButton
+    }
+    
+    @IBAction func unwindToSearchView (segue: UIStoryboardSegue){
+        
     }
 }

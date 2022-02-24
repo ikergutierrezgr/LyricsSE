@@ -12,7 +12,7 @@ class LyricsViewController: UIViewController {
     
     @IBOutlet var lyricsLabel: UILabel!
     
-    @IBOutlet var saveButton: UIButton!
+    @IBOutlet var saveButton: UIBarButtonItem!
     
     
     override func viewDidLoad() {
@@ -46,7 +46,7 @@ class LyricsViewController: UIViewController {
     func displayError(_ error: Error, title: String){
         guard let _ = viewIfLoaded?.window else { return }
                 
-        let alert = UIAlertController(title: title, message: "\(LyricsController.shared.songTitle.capitalizingFirstLetter()) from \(LyricsController.shared.artistName.capitalized) not found.", preferredStyle: .alert)
+        let alert = UIAlertController(title: title, message: "\(LyricsController.shared.songTitle) from \(LyricsController.shared.artistName) not found.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: {(alert: UIAlertAction!) in
             DispatchQueue.main.async( execute: {
                 self.popThisView()
@@ -64,21 +64,24 @@ class LyricsViewController: UIViewController {
     
     func cleanLyricsText(lyrycsText lyrics : String) -> String{
         var cleandedlyrics: String = ""
-        let removeCharacters: String = "Paroles de la chanson \(LyricsController.shared.songTitle.capitalizingFirstLetter()) par \(LyricsController.shared.artistName.capitalizingFirstLetter())"
+        let removeCharacters: String = "Paroles de la chanson \(LyricsController.shared.songTitle.lowercased().capitalizingFirstLetter()) par \(LyricsController.shared.artistName.lowercased().capitalizingFirstLetter())"
         
         cleandedlyrics = lyrics.replacingOccurrences(of: removeCharacters, with: "")
         
+        // Debug use
         print(lyrics)
-        
         
 //        var charactersToDelete: Int = 22
 //
 //        charactersToDelete = charactersToDelete + LyricsController.shared.songTitle.count + LyricsController.shared.artistName.count + 5
         
-        
         return cleandedlyrics
     }
     
+
+    @IBAction func saveSongButtonPressed(_ sender: UIBarButtonItem) {
+        print ("Song lyric saved")
+    }
     
 }
 

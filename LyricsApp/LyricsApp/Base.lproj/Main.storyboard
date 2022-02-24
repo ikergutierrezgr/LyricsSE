@@ -107,7 +107,7 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Search lyrics"/>
                                 <connections>
                                     <action selector="searchLyricsTapped:" destination="34J-hn-eU0" eventType="touchUpInside" id="72o-Fg-VLf"/>
-                                    <segue destination="kSY-Ku-ziY" kind="show" id="SPa-jW-UVH"/>
+                                    <segue destination="Yku-Z5-ODi" kind="show" id="SPa-jW-UVH"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -138,21 +138,13 @@
         <!--Lyrics View Controller-->
         <scene sceneID="lVi-KG-XTG">
             <objects>
-                <viewController id="kSY-Ku-ziY" customClass="LyricsViewController" customModule="LyricsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="kSY-Ku-ziY" customClass="LyricsViewController" customModule="LyricsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dPG-3o-iJn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ye-mI-izd" userLabel="SaveButton">
-                                <rect key="frame" x="320" y="49" width="74" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Save">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="16"/>
-                                </buttonConfiguration>
-                            </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A0M-Nv-hGh">
-                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="kLk-Yd-Lbo">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="60.5"/>
@@ -201,14 +193,27 @@
                             <constraint firstItem="A0M-Nv-hGh" firstAttribute="leading" secondItem="8ub-GP-0g3" secondAttribute="leading" id="u30-53-aDc"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="sDm-Wa-Xfb">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="LGu-1z-LVq">
+                            <connections>
+                                <segue destination="OK9-gL-Gmo" kind="unwind" unwindAction="unwindToSearchViewWithSegue:" id="UD1-Ox-itg"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="gHe-fu-6je">
+                            <connections>
+                                <action selector="saveSongButtonPressed:" destination="kSY-Ku-ziY" id="YOD-aJ-oM6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="lyricsLabel" destination="XIt-qk-ksm" id="02K-BH-Ygt"/>
-                        <outlet property="saveButton" destination="5ye-mI-izd" id="Dwm-Gx-lnT"/>
+                        <outlet property="saveButton" destination="gHe-fu-6je" id="28a-If-ZsN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JM3-73-iuQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="OK9-gL-Gmo" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3566.666666666667" y="-144.64285714285714"/>
+            <point key="canvasLocation" x="4476.811594202899" y="-144.64285714285714"/>
         </scene>
         <!--Search-->
         <scene sceneID="KGT-66-F52">
@@ -247,6 +252,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Klo-ii-89l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="855.07246376811599" y="218.97321428571428"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="pRm-4h-4cJ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="Yku-Z5-ODi" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="aU2-3L-Zqh"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pJO-1D-kEf">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="kSY-Ku-ziY" kind="relationship" relationship="rootViewController" id="Vf2-Iw-brn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5bB-Lt-2Mh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3566.666666666667" y="-144.64285714285714"/>
         </scene>
     </scenes>
     <resources>
