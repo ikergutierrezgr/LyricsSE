@@ -2,7 +2,7 @@
 //  LyricsViewController.swift
 //  LyricsApp
 //
-//  Created by Iker Gutierrez on 19/2/22.
+//  Created by Iker Gutierrez.
 //
 
 import UIKit
@@ -12,12 +12,17 @@ class LyricsViewController: UIViewController {
     
     @IBOutlet var lyricsLabel: UILabel!
     
+    @IBOutlet var saveButton: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateSaveButtonState(newState: false)
         Task.init {
             do {
                 let lyrics = try await LyricsController.shared.fetchLyrics()
                 updateUI(with: cleanLyricsText(lyrycsText: lyrics))
+                updateSaveButtonState(newState: true)
             } catch {
                 displayError(error, title: "Failed to get the lyrics for the requested song.")
             }
@@ -28,6 +33,10 @@ class LyricsViewController: UIViewController {
 
     func updateUI(with lyrics : String){
         lyricsLabel.text = lyrics
+    }
+    
+    func updateSaveButtonState (newState state : Bool){
+        saveButton.isEnabled = state
     }
     
     func displayUIError(){
@@ -59,14 +68,12 @@ class LyricsViewController: UIViewController {
         
         cleandedlyrics = lyrics.replacingOccurrences(of: removeCharacters, with: "")
         
-        print(cleandedlyrics)
+        print(lyrics)
         
         
-        var charactersToDelete: Int = 22
-        
-        charactersToDelete = charactersToDelete + LyricsController.shared.songTitle.count + LyricsController.shared.artistName.count + 5
-        
-        print(charactersToDelete)
+//        var charactersToDelete: Int = 22
+//
+//        charactersToDelete = charactersToDelete + LyricsController.shared.songTitle.count + LyricsController.shared.artistName.count + 5
         
         
         return cleandedlyrics

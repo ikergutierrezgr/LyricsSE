@@ -75,6 +75,10 @@
                                         <rect key="frame" x="0.0" y="28.5" width="398" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="returnPressed:" destination="34J-hn-eU0" eventType="primaryActionTriggered" id="pkd-c5-nZZ"/>
+                                            <action selector="textEditingChanged:" destination="34J-hn-eU0" eventType="editingChanged" id="njC-AS-WCz"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                             </stackView>
@@ -91,6 +95,10 @@
                                         <rect key="frame" x="0.0" y="28.5" width="398" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="returnPressed:" destination="34J-hn-eU0" eventType="primaryActionTriggered" id="YOh-es-9Uu"/>
+                                            <action selector="textEditingChanged:" destination="34J-hn-eU0" eventType="editingChanged" id="gIl-o3-eZi"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                             </stackView>
@@ -135,6 +143,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ye-mI-izd" userLabel="SaveButton">
+                                <rect key="frame" x="320" y="49" width="74" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Save">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="16"/>
+                                </buttonConfiguration>
+                            </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A0M-Nv-hGh">
                                 <rect key="frame" x="0.0" y="140" width="414" height="673"/>
                                 <subviews>
@@ -185,14 +201,14 @@
                             <constraint firstItem="A0M-Nv-hGh" firstAttribute="leading" secondItem="8ub-GP-0g3" secondAttribute="leading" id="u30-53-aDc"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="WAx-em-UsF"/>
                     <connections>
                         <outlet property="lyricsLabel" destination="XIt-qk-ksm" id="02K-BH-Ygt"/>
+                        <outlet property="saveButton" destination="5ye-mI-izd" id="Dwm-Gx-lnT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JM3-73-iuQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3568" y="-144"/>
+            <point key="canvasLocation" x="3566.666666666667" y="-144.64285714285714"/>
         </scene>
         <!--Search-->
         <scene sceneID="KGT-66-F52">
