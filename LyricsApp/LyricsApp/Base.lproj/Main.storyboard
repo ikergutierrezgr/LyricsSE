@@ -3,8 +3,8 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,15 +15,18 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="NhE-uv-Jks">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Ds1-W5-Eli">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SongCell" id="Ds1-W5-Eli">
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ds1-W5-Eli" id="B1F-ud-E6X">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="tintColor" red="0.7700002789" green="0.1192734018" blue="0.3393132687" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </tableViewCellContentView>
+                                <color key="tintColor" red="0.7700002789" green="0.1192734018" blue="0.3393132687" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -45,6 +48,12 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="2aq-GS-XHQ">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.7700002789" green="0.1192734018" blue="0.3393132687" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" red="0.7700002789" green="0.1192734018" blue="0.3393132687" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="APQ-rh-TSA" kind="relationship" relationship="rootViewController" id="DMC-J6-iJT"/>
@@ -54,7 +63,7 @@
             </objects>
             <point key="canvasLocation" x="1765.217391304348" y="582.58928571428567"/>
         </scene>
-        <!--Search View Controller-->
+        <!--Search-->
         <scene sceneID="Txa-E5-Zil">
             <objects>
                 <viewController id="34J-hn-eU0" customClass="SearchViewController" customModule="LyricsApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -67,44 +76,50 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HW1-rg-ffA">
                                         <rect key="frame" x="0.0" y="0.0" width="398" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" red="0.7700002789" green="0.1192734018" blue="0.3393132687" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="highlightedColor" red="0.7700002789" green="0.1192734018" blue="0.3393132687" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Artist Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YpP-0x-fJy">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type Artist Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="YpP-0x-fJy">
                                         <rect key="frame" x="0.0" y="28.5" width="398" height="34"/>
+                                        <color key="backgroundColor" red="0.78823524710000004" green="0.78823524710000004" blue="0.78823524710000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                         <connections>
                                             <action selector="returnPressed:" destination="34J-hn-eU0" eventType="primaryActionTriggered" id="pkd-c5-nZZ"/>
                                             <action selector="textEditingChanged:" destination="34J-hn-eU0" eventType="editingChanged" id="njC-AS-WCz"/>
                                         </connections>
                                     </textField>
                                 </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2AO-kv-gyl" userLabel="Song Stack View">
                                 <rect key="frame" x="8" y="222.5" width="398" height="62.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpX-76-4VI">
                                         <rect key="frame" x="0.0" y="0.0" width="398" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" red="0.7700002789" green="0.1192734018" blue="0.3393132687" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Song Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RL2-wR-bII">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type song Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="RL2-wR-bII">
                                         <rect key="frame" x="0.0" y="28.5" width="398" height="34"/>
+                                        <color key="backgroundColor" red="0.78823524710000004" green="0.78823524710000004" blue="0.78823524710000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                         <connections>
                                             <action selector="returnPressed:" destination="34J-hn-eU0" eventType="primaryActionTriggered" id="YOh-es-9Uu"/>
                                             <action selector="textEditingChanged:" destination="34J-hn-eU0" eventType="editingChanged" id="gIl-o3-eZi"/>
                                         </connections>
                                     </textField>
                                 </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NAb-SI-dFo">
                                 <rect key="frame" x="153.5" y="305" width="107" height="31"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Search lyrics"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Search lyrics">
+                                    <color key="baseBackgroundColor" red="0.7700002789" green="0.1192734018" blue="0.3393132687" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="searchLyricsTapped:" destination="34J-hn-eU0" eventType="touchUpInside" id="72o-Fg-VLf"/>
                                     <segue destination="Yku-Z5-ODi" kind="show" id="SPa-jW-UVH"/>
@@ -112,7 +127,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ywy-Xc-BLz"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="fzv-sA-a5I" firstAttribute="top" secondItem="Ywy-Xc-BLz" secondAttribute="top" id="0UL-Mg-W07"/>
                             <constraint firstItem="2AO-kv-gyl" firstAttribute="leading" secondItem="Ywy-Xc-BLz" secondAttribute="leading" constant="8" id="2yS-Rs-e23"/>
@@ -124,7 +139,7 @@
                             <constraint firstItem="2AO-kv-gyl" firstAttribute="top" secondItem="fzv-sA-a5I" secondAttribute="bottom" constant="20" id="ubm-qC-NQz"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Qy6-ZP-caa"/>
+                    <navigationItem key="navigationItem" title="Search" id="Qy6-ZP-caa"/>
                     <connections>
                         <outlet property="artistNameText" destination="YpP-0x-fJy" id="xrI-St-LA1"/>
                         <outlet property="searchButton" destination="NAb-SI-dFo" id="5FA-8i-A52"/>
@@ -154,12 +169,13 @@
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Searching..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XIt-qk-ksm" userLabel="LyricsLabel">
                                                         <rect key="frame" x="10" y="0.0" width="394" height="40.5"/>
+                                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
+                                                        <color key="textColor" red="0.7700002789" green="0.1192734018" blue="0.3393132687" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="highlightedColor" red="0.7700002789" green="0.1192734018" blue="0.3393132687" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="XIt-qk-ksm" firstAttribute="leading" secondItem="3JW-Ij-uXV" secondAttribute="leading" constant="10" id="AoN-xw-lKF"/>
                                                     <constraint firstAttribute="bottom" secondItem="XIt-qk-ksm" secondAttribute="bottom" constant="20" id="pmV-ft-uZx"/>
@@ -168,11 +184,14 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" red="0.7700002789" green="0.1192734018" blue="0.3393132687" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="3JW-Ij-uXV" firstAttribute="height" secondItem="kLk-Yd-Lbo" secondAttribute="height" id="KLI-9K-ono"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="kLk-Yd-Lbo" firstAttribute="trailing" secondItem="fWb-BC-uSP" secondAttribute="trailing" id="4oK-xb-nCx"/>
                                     <constraint firstItem="kLk-Yd-Lbo" firstAttribute="leading" secondItem="fWb-BC-uSP" secondAttribute="leading" id="JTO-ik-GRt"/>
@@ -185,7 +204,8 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8ub-GP-0g3"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.7700002789" green="0.1192734018" blue="0.3393132687" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="A0M-Nv-hGh" firstAttribute="bottom" secondItem="8ub-GP-0g3" secondAttribute="bottom" id="91M-CY-cAI"/>
                             <constraint firstItem="A0M-Nv-hGh" firstAttribute="trailing" secondItem="8ub-GP-0g3" secondAttribute="trailing" id="Jo7-t1-5FZ"/>
@@ -195,11 +215,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="sDm-Wa-Xfb">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="LGu-1z-LVq">
+                            <color key="tintColor" red="0.7700002789" green="0.1192734018" blue="0.3393132687" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="OK9-gL-Gmo" kind="unwind" unwindAction="unwindToSearchViewWithSegue:" id="UD1-Ox-itg"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="gHe-fu-6je">
+                            <color key="tintColor" red="0.7700002789" green="0.1192734018" blue="0.3393132687" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="saveSongButtonPressed:" destination="kSY-Ku-ziY" id="YOD-aJ-oM6"/>
                             </connections>
@@ -219,11 +241,20 @@
         <scene sceneID="KGT-66-F52">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="waM-UT-Ywg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="tBn-ZJ-tqr"/>
+                    <tabBarItem key="tabBarItem" title="Search" id="tBn-ZJ-tqr">
+                        <imageReference key="image" image="magnifyingglass" catalog="system"/>
+                        <color key="badgeColor" red="0.7700002789" green="0.1192734018" blue="0.3393132687" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="al1-eJ-TBU">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.7700002789" green="0.1192734018" blue="0.3393132687" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" red="0.7700002789" green="0.1192734018" blue="0.3393132687" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -239,10 +270,11 @@
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="ZgS-v1-4I4" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="D95-Ps-BfH">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="D95-Ps-BfH">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="0.7700002789" green="0.1192734018" blue="0.3393132687" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="waM-UT-Ywg" kind="relationship" relationship="viewControllers" id="ppl-JZ-DXt"/>
@@ -276,8 +308,5 @@
     <resources>
         <image name="books.vertical" catalog="system" width="128" height="107"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>
