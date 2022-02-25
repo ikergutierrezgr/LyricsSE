@@ -38,7 +38,4 @@ class SearchViewController: UIViewController {
         searchButton.isEnabled = shouldEnableSaveButton
     }
     
-    @IBAction func unwindToSearchView (segue: UIStoryboardSegue){
-        
-    }
 }

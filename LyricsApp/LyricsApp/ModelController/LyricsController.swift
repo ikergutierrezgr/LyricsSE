@@ -14,6 +14,7 @@ class LyricsController {
     
     var artistName : String = ""
     var songTitle : String = ""
+    var lyricsString : String = ""
     
     let url = URL(string: "https://api.lyrics.ovh/v1")!
     

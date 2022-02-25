@@ -22,7 +22,7 @@
                                 <color key="textColor" red="0.7700002789" green="0.1192734018" blue="0.3393132687" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="0.28790801760000001" green="0.23950526120000001" blue="0.55828475950000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <size key="shadowOffset" width="3" height="-1"/>
+                                <size key="shadowOffset" width="1" height="-1"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

@@ -14,18 +14,47 @@ class LyricsViewController: UIViewController {
     
     @IBOutlet var saveButton: UIBarButtonItem!
     
+    var songLoaded: Bool = false
+    var song: Song?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateSaveButtonState(newState: false)
-        Task.init {
-            do {
-                let lyrics = try await LyricsController.shared.fetchLyrics()
-                updateUI(with: cleanLyricsText(lyrycsText: lyrics))
-                updateSaveButtonState(newState: true)
-            } catch {
-                displayError(error, title: "Failed to get the lyrics for the requested song.")
-            }
+        checkSongSavedStatus()
+        if let song = song {
+            print("Song loaded")
+            print(song.artist)
+            updateUI(with: song.lyrics)
+        } else {
+            print("no song loaded")
+            Task.init {
+                do {
+                    LyricsController.shared.lyricsString = try await LyricsController.shared.fetchLyrics()
+                    updateUI(with: cleanLyricsText(lyricsText:  LyricsController.shared.lyricsString))
+                    checkSongSavedStatus()
+                } catch {
+                    displayError(error, title: "Failed to get the lyrics for the requested song.")
+                }
+        }
+            
+        
+        
+//        if(!songLoaded){
+//
+//            Task.init {
+//                do {
+//                    LyricsController.shared.lyricsString = try await LyricsController.shared.fetchLyrics()
+//                    updateUI(with: cleanLyricsText(lyricsText:  LyricsController.shared.lyricsString))
+//                    checkSongSavedStatus()
+//                } catch {
+//                    displayError(error, title: "Failed to get the lyrics for the requested song.")
+//                }
+//            }
+//        } else {
+//            print("Song loaded")
+//            updateUI(with: cleanLyricsText(lyricsText: song!.lyrics))
+//        }
         }
         
     }
@@ -33,6 +62,21 @@ class LyricsViewController: UIViewController {
 
     func updateUI(with lyrics : String){
         lyricsLabel.text = lyrics
+    }
+    
+    func checkSongSavedStatus(){
+        
+        updateSaveButtonState(newState: true)
+        if song == nil{
+            print("Song es nil")
+            songLoaded = false
+            saveButton.title = "Save"
+            return
+        }
+        print("Song no es nil")
+        songLoaded = true
+        saveButton.title = "Unsave"
+        
     }
     
     func updateSaveButtonState (newState state : Bool){
@@ -62,14 +106,14 @@ class LyricsViewController: UIViewController {
         self.navigationController!.popToRootViewController(animated: true)
     }
     
-    func cleanLyricsText(lyrycsText lyrics : String) -> String{
+    func cleanLyricsText(lyricsText lyrics : String) -> String{
         var cleandedlyrics: String = ""
         let removeCharacters: String = "Paroles de la chanson \(LyricsController.shared.songTitle.lowercased().capitalizingFirstLetter()) par \(LyricsController.shared.artistName.lowercased().capitalizingFirstLetter())"
         
         cleandedlyrics = lyrics.replacingOccurrences(of: removeCharacters, with: "")
         
         // Debug use
-        print(lyrics)
+//        print(lyrics)
         
 //        var charactersToDelete: Int = 22
 //
@@ -78,9 +122,15 @@ class LyricsViewController: UIViewController {
         return cleandedlyrics
     }
     
+    
 
     @IBAction func saveSongButtonPressed(_ sender: UIBarButtonItem) {
         print ("Song lyric saved")
+    }
+
+
+    @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
+        popThisView()
     }
     
 }
@@ -93,4 +143,7 @@ extension String {
     mutating func capitalizeFirstLetter() {
         self = self.capitalizingFirstLetter()
     }
+    
+    
+    
 }

@@ -17,16 +17,44 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SongCell" id="Ds1-W5-Eli">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SavedSongCellIdentifier" rowHeight="62" id="Ds1-W5-Eli" customClass="SavedSongCell" customModule="LyricsApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="62"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ds1-W5-Eli" id="B1F-ud-E6X">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="62"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ka4-ap-h2H" userLabel="SongLabel">
+                                            <rect key="frame" x="20" y="24.5" width="374" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.78823524710000004" green="0.78823524710000004" blue="0.78823524710000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kf1-Uh-Uj7" userLabel="ArtistLabel">
+                                            <rect key="frame" x="20" y="2" width="374" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" red="0.7700002789" green="0.1192734018" blue="0.3393132687" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="tintColor" red="0.7700002789" green="0.1192734018" blue="0.3393132687" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="kf1-Uh-Uj7" firstAttribute="top" secondItem="B1F-ud-E6X" secondAttribute="top" constant="2" id="0NR-RL-2bZ"/>
+                                        <constraint firstItem="ka4-ap-h2H" firstAttribute="top" secondItem="kf1-Uh-Uj7" secondAttribute="bottom" constant="2" id="FsK-09-L9s"/>
+                                        <constraint firstItem="ka4-ap-h2H" firstAttribute="leading" secondItem="B1F-ud-E6X" secondAttribute="leading" constant="20" id="T6r-kY-NHt"/>
+                                        <constraint firstItem="kf1-Uh-Uj7" firstAttribute="trailing" secondItem="B1F-ud-E6X" secondAttribute="trailing" constant="-20" id="cEX-Aj-fYA"/>
+                                        <constraint firstItem="kf1-Uh-Uj7" firstAttribute="leading" secondItem="B1F-ud-E6X" secondAttribute="leading" constant="20" id="dQg-z9-Sbs"/>
+                                        <constraint firstItem="ka4-ap-h2H" firstAttribute="trailing" secondItem="B1F-ud-E6X" secondAttribute="trailing" constant="-20" id="f3b-o1-KAO"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="0.7700002789" green="0.1192734018" blue="0.3393132687" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="artistLabel" destination="kf1-Uh-Uj7" id="Kzl-fj-nVe"/>
+                                    <outlet property="songLabel" destination="ka4-ap-h2H" id="abB-Hd-6YV"/>
+                                    <segue destination="Yku-Z5-ODi" kind="show" identifier="segueFromLibrary" id="9eU-Bz-1OJ"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -115,14 +143,18 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NAb-SI-dFo">
-                                <rect key="frame" x="153.5" y="305" width="107" height="31"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Search lyrics">
-                                    <color key="baseBackgroundColor" red="0.7700002789" green="0.1192734018" blue="0.3393132687" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </buttonConfiguration>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NAb-SI-dFo">
+                                <rect key="frame" x="155.5" y="305" width="103" height="34"/>
+                                <color key="backgroundColor" red="0.7700002789" green="0.1192734018" blue="0.3393132687" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Search lyrics"/>
+                                <state key="disabled">
+                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="searchLyricsTapped:" destination="34J-hn-eU0" eventType="touchUpInside" id="72o-Fg-VLf"/>
-                                    <segue destination="Yku-Z5-ODi" kind="show" id="SPa-jW-UVH"/>
+                                    <segue destination="Yku-Z5-ODi" kind="show" identifier="segueFromSearch" id="SPa-jW-UVH"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -214,10 +246,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="sDm-Wa-Xfb">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="LGu-1z-LVq">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="LGu-1z-LVq">
                             <color key="tintColor" red="0.7700002789" green="0.1192734018" blue="0.3393132687" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <segue destination="OK9-gL-Gmo" kind="unwind" unwindAction="unwindToSearchViewWithSegue:" id="UD1-Ox-itg"/>
+                                <action selector="backButtonPressed:" destination="kSY-Ku-ziY" id="e7w-6B-jU8"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="gHe-fu-6je">
@@ -233,9 +265,8 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JM3-73-iuQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="OK9-gL-Gmo" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4476.811594202899" y="-144.64285714285714"/>
+            <point key="canvasLocation" x="4648" y="293"/>
         </scene>
         <!--Search-->
         <scene sceneID="KGT-66-F52">
@@ -291,13 +322,14 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="Yku-Z5-ODi" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="aU2-3L-Zqh"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pJO-1D-kEf">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="pJO-1D-kEf">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="kSY-Ku-ziY" kind="relationship" relationship="rootViewController" id="Vf2-Iw-brn"/>
+                        <segue destination="kSY-Ku-ziY" kind="relationship" relationship="rootViewController" destinationCreationSelector="showSongLyrics:sender:" id="Vf2-Iw-brn"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5bB-Lt-2Mh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -305,6 +337,9 @@
             <point key="canvasLocation" x="3566.666666666667" y="-144.64285714285714"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="9eU-Bz-1OJ"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="books.vertical" catalog="system" width="128" height="107"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>

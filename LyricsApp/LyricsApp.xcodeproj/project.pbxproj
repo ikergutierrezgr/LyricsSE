@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		727CC7BA27C85A5F00A743B8 /* SavedSongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727CC7B927C85A5F00A743B8 /* SavedSongCell.swift */; };
 		72D7E60927BFCEA40002B914 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D7E60827BFCEA40002B914 /* SearchViewController.swift */; };
 		72DA0AB027C06582006D3454 /* ResponseModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DA0AAF27C06582006D3454 /* ResponseModels.swift */; };
 		72DA0AB227C06653006D3454 /* LyricsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DA0AB127C06653006D3454 /* LyricsController.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		727CC7B927C85A5F00A743B8 /* SavedSongCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedSongCell.swift; sourceTree = "<group>"; };
 		72D7E60827BFCEA40002B914 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		72DA0AAF27C06582006D3454 /* ResponseModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModels.swift; sourceTree = "<group>"; };
 		72DA0AB127C06653006D3454 /* LyricsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricsController.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 			children = (
 				72EDB5AB27BDE2D400F9DEA4 /* Song.swift */,
 				72DA0AAF27C06582006D3454 /* ResponseModels.swift */,
+				727CC7B927C85A5F00A743B8 /* SavedSongCell.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				72D7E60927BFCEA40002B914 /* SearchViewController.swift in Sources */,
+				727CC7BA27C85A5F00A743B8 /* SavedSongCell.swift in Sources */,
 				72E675B127B72ED400F11713 /* AppDelegate.swift in Sources */,
 				72DA0AB427C069BE006D3454 /* LyricsViewController.swift in Sources */,
 				72DA0AB227C06653006D3454 /* LyricsController.swift in Sources */,
