@@ -11,16 +11,28 @@ class LibraryTableViewController: UITableViewController {
     
     var songsStored = [Song] ()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let savedSongs = Song.loadSongs() {
             songsStored = savedSongs
-        } else {
-            songsStored = Song.loadSampleSongs()
         }
+//        else {
+//            songsStored = Song.loadSampleSongs()
+//        }
         navigationItem.leftBarButtonItem = editButtonItem
-
+        editButtonItem.tintColor = UIColor(red: 201/255, green: 31/255, blue: 87/255, alpha: 1)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let savedSongs = Song.loadSongs() {
+            songsStored = savedSongs
+        }
+//        else {
+//            songsStored = Song.loadSampleSongs()
+//        }
+        tableView.reloadData()
     }
 
 
@@ -52,7 +64,6 @@ class LibraryTableViewController: UITableViewController {
     
     
     @IBSegueAction func showSongLyrics(_ coder: NSCoder, sender: Any?) -> LyricsViewController? {
-        print("MODIFICADO")
         let lyricsController = LyricsViewController(coder: coder)
         
         guard let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) else {
@@ -66,21 +77,21 @@ class LibraryTableViewController: UITableViewController {
         
         return lyricsController
     }
-    @IBSegueAction func showSongLyrics2(_ coder: NSCoder, sender: Any?) -> LyricsViewController? {
-        print("MODIFICADO")
-        let lyricsController = LyricsViewController(coder: coder)
-        
-        guard let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) else {
-            return lyricsController
-        }
-        
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        lyricsController?.song = songsStored[indexPath.row]
-        
-        
-        return lyricsController
-    }
-    
+//    @IBSegueAction func showSongLyrics2(_ coder: NSCoder, sender: Any?) -> LyricsViewController? {
+//        print("MODIFICADO")
+//        let lyricsController = LyricsViewController(coder: coder)
+//
+//        guard let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) else {
+//            return lyricsController
+//        }
+//
+//        tableView.deselectRow(at: indexPath, animated: true)
+//
+//        lyricsController?.song = songsStored[indexPath.row]
+//
+//
+//        return lyricsController
+//    }
+//
     
 }

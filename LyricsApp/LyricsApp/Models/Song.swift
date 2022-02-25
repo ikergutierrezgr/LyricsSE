@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Song: Codable {
+struct Song: Codable, Equatable {
     var id: UUID
     var artist: String
     var title: String
@@ -38,6 +38,7 @@ struct Song: Codable {
 //    static func == (lhs: ToDo, rhs: ToDo) -> Bool {
 //        return lhs.id == rhs.id
 //    }
+    
     
     static func loadSongs() -> [Song]? {
         guard let codedSongs = try? Data(contentsOf: archiveURL) else {return nil}

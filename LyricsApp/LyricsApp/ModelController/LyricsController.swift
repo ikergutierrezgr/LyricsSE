@@ -18,7 +18,7 @@ class LyricsController {
     
     let url = URL(string: "https://api.lyrics.ovh/v1")!
     
-    
+    var songsLocallyStored = [Song] ()
     
     enum SongControllerError: Error, LocalizedError {
         case lyricsNotFound
@@ -44,5 +44,6 @@ class LyricsController {
         
         return lyricsResponse.lyrics
     }
+    
     
 }

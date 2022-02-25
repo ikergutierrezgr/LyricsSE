@@ -14,47 +14,44 @@ class LyricsViewController: UIViewController {
     
     @IBOutlet var saveButton: UIBarButtonItem!
     
-    var songLoaded: Bool = false
     var song: Song?
     
+    var songsLocallyStored = [Song] ()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadSavedSongs()
         updateSaveButtonState(newState: false)
-        checkSongSavedStatus()
         if let song = song {
             print("Song loaded")
             print(song.artist)
             updateUI(with: song.lyrics)
+            checkSongSavedStatus()
         } else {
             print("no song loaded")
-            Task.init {
-                do {
-                    LyricsController.shared.lyricsString = try await LyricsController.shared.fetchLyrics()
-                    updateUI(with: cleanLyricsText(lyricsText:  LyricsController.shared.lyricsString))
-                    checkSongSavedStatus()
-                } catch {
-                    displayError(error, title: "Failed to get the lyrics for the requested song.")
-                }
-        }
+            var tempSong = Song(artist: LyricsController.shared.artistName, title: LyricsController.shared.songTitle, lyrics: LyricsController.shared.lyricsString)
+            if (checkSongSaveStatus(songToCheck: tempSong)) {
+                print("But song is saved in system")
+                var firstIndex = songsLocallyStored.firstIndex(of: tempSong)
+                tempSong.lyrics = songsLocallyStored[firstIndex!].lyrics
+                song = tempSong
+                updateUI(with: song!.lyrics)
+                checkSongSavedStatus()
+                
+            } else {
+                print("Song is not saved")
+                Task.init {
+                    do {
+                        LyricsController.shared.lyricsString = try await LyricsController.shared.fetchLyrics()
+                        updateUI(with: cleanLyricsText(lyricsText:  LyricsController.shared.lyricsString))
+                        checkSongSavedStatus()
+                    } catch {
+                        displayError(error, title: "Failed to get the lyrics for the requested song.")
+                    }
+            }
             
-        
-        
-//        if(!songLoaded){
-//
-//            Task.init {
-//                do {
-//                    LyricsController.shared.lyricsString = try await LyricsController.shared.fetchLyrics()
-//                    updateUI(with: cleanLyricsText(lyricsText:  LyricsController.shared.lyricsString))
-//                    checkSongSavedStatus()
-//                } catch {
-//                    displayError(error, title: "Failed to get the lyrics for the requested song.")
-//                }
-//            }
-//        } else {
-//            print("Song loaded")
-//            updateUI(with: cleanLyricsText(lyricsText: song!.lyrics))
-//        }
+
+        }
         }
         
     }
@@ -69,13 +66,16 @@ class LyricsViewController: UIViewController {
         updateSaveButtonState(newState: true)
         if song == nil{
             print("Song es nil")
-            songLoaded = false
             saveButton.title = "Save"
             return
+        } else {
+            print("Song no es nil")
+            if checkSongSaveStatus(songToCheck: song!){
+                saveButton.title = "Unsave"
+            } else {
+                saveButton.title = "Save"
+            }
         }
-        print("Song no es nil")
-        songLoaded = true
-        saveButton.title = "Unsave"
         
     }
     
@@ -125,7 +125,49 @@ class LyricsViewController: UIViewController {
     
 
     @IBAction func saveSongButtonPressed(_ sender: UIBarButtonItem) {
-        print ("Song lyric saved")
+        
+        if (song != nil){
+            print ("Song already saved")
+            if checkSongSaveStatus(songToCheck: song!){
+                //True
+                //Delete song
+                if let firstIndex = songsLocallyStored.firstIndex(of: song!){
+                    songsLocallyStored.remove(at: firstIndex)
+                    Song.saveSongs(songsLocallyStored)
+                }
+                print("Deleting")
+                
+            } else {
+                //False
+                //Save song
+                print("Saving")
+                songsLocallyStored.append(song!)
+                Song.saveSongs(songsLocallyStored)
+            }
+        } else {
+            print("song still not saved")
+            // Save song
+            song = Song(artist: LyricsController.shared.artistName, title: LyricsController.shared.songTitle, lyrics: LyricsController.shared.lyricsString )
+            songsLocallyStored.append(song!)
+            Song.saveSongs(songsLocallyStored)
+        }
+        checkSongSavedStatus()
+        
+    }
+    
+    func checkSongSaveStatus(songToCheck song : Song ) -> Bool {
+        return songsLocallyStored.contains(song)
+        
+    }
+    
+    
+    func loadSavedSongs(){
+        if let savedSongs = Song.loadSongs() {
+            songsLocallyStored = savedSongs
+        }
+//        else {
+//            songsLocallyStored = Song.loadSampleSongs()
+//        }
     }
 
 
@@ -135,6 +177,7 @@ class LyricsViewController: UIViewController {
     
 }
 
+
 extension String {
     func capitalizingFirstLetter() -> String {
         return prefix(1).capitalized + dropFirst()
@@ -143,7 +186,10 @@ extension String {
     mutating func capitalizeFirstLetter() {
         self = self.capitalizingFirstLetter()
     }
-    
-    
-    
+}
+
+extension Array {
+ func contains<T>(obj: T) -> Bool where T: Equatable {
+     return !self.filter({$0 as? T == obj}).isEmpty
+ }
 }
