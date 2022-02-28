@@ -23,15 +23,11 @@ class LyricsViewController: UIViewController {
         loadSavedSongs()
         updateSaveButtonState(newState: false)
         if let song = song {
-            print("Song loaded")
-            print(song.artist)
             updateUI(with: song.lyrics)
             checkSongSavedStatus()
         } else {
-            print("no song loaded")
             var tempSong = Song(artist: LyricsController.shared.artistName, title: LyricsController.shared.songTitle, lyrics: LyricsController.shared.lyricsString)
             if (checkSongSaveStatus(songToCheck: tempSong)) {
-                print("But song is saved in system")
                 var firstIndex = songsLocallyStored.firstIndex(of: tempSong)
                 tempSong.lyrics = songsLocallyStored[firstIndex!].lyrics
                 song = tempSong
@@ -39,7 +35,6 @@ class LyricsViewController: UIViewController {
                 checkSongSavedStatus()
                 
             } else {
-                print("Song is not saved")
                 Task.init {
                     do {
                         LyricsController.shared.lyricsString = try await LyricsController.shared.fetchLyrics()
@@ -65,11 +60,9 @@ class LyricsViewController: UIViewController {
         
         updateSaveButtonState(newState: true)
         if song == nil{
-            print("Song es nil")
             saveButton.title = "Save"
             return
         } else {
-            print("Song no es nil")
             if checkSongSaveStatus(songToCheck: song!){
                 saveButton.title = "Unsave"
             } else {
@@ -127,32 +120,21 @@ class LyricsViewController: UIViewController {
     @IBAction func saveSongButtonPressed(_ sender: UIBarButtonItem) {
         
         if (song != nil){
-            print ("Song already saved")
             if checkSongSaveStatus(songToCheck: song!){
-                //True
-                //Delete song
                 if let firstIndex = songsLocallyStored.firstIndex(of: song!){
                     songsLocallyStored.remove(at: firstIndex)
                     Song.saveSongs(songsLocallyStored)
                 }
-                print("Deleting")
-                
             } else {
-                //False
-                //Save song
-                print("Saving")
                 songsLocallyStored.append(song!)
                 Song.saveSongs(songsLocallyStored)
             }
         } else {
-            print("song still not saved")
-            // Save song
             song = Song(artist: LyricsController.shared.artistName, title: LyricsController.shared.songTitle, lyrics: LyricsController.shared.lyricsString )
             songsLocallyStored.append(song!)
             Song.saveSongs(songsLocallyStored)
         }
         checkSongSavedStatus()
-        
     }
     
     func checkSongSaveStatus(songToCheck song : Song ) -> Bool {
@@ -165,6 +147,7 @@ class LyricsViewController: UIViewController {
         if let savedSongs = Song.loadSongs() {
             songsLocallyStored = savedSongs
         }
+        // Debug Load Sample Songs
 //        else {
 //            songsLocallyStored = Song.loadSampleSongs()
 //        }

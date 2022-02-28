@@ -28,10 +28,6 @@ class LyricsController {
         
         let lyricsURL = url.appendingPathComponent("/\(artistName.lowercased())/\(songTitle.lowercased())")
         
-        print (lyricsURL)
-        print (artistName)
-        print(songTitle)
-        
         // fetch Lyrics
         let (data, response) = try await URLSession.shared.data(from: lyricsURL)
         

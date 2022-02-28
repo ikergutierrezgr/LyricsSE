@@ -27,7 +27,14 @@ class LibraryTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         if let savedSongs = Song.loadSongs() {
-            songsStored = savedSongs
+            songsStored = savedSongs.sorted {
+                
+                if $0.artist.lowercased() == $1.artist.lowercased() {
+                    return $0.title.lowercased() < $1.title.lowercased()
+                } else {
+                   return $0.artist.lowercased() < $1.artist.lowercased()
+                }
+            }
         }
 //        else {
 //            songsStored = Song.loadSampleSongs()
@@ -76,22 +83,5 @@ class LibraryTableViewController: UITableViewController {
         
         
         return lyricsController
-    }
-//    @IBSegueAction func showSongLyrics2(_ coder: NSCoder, sender: Any?) -> LyricsViewController? {
-//        print("MODIFICADO")
-//        let lyricsController = LyricsViewController(coder: coder)
-//
-//        guard let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) else {
-//            return lyricsController
-//        }
-//
-//        tableView.deselectRow(at: indexPath, animated: true)
-//
-//        lyricsController?.song = songsStored[indexPath.row]
-//
-//
-//        return lyricsController
-//    }
-//
-    
+    }    
 }

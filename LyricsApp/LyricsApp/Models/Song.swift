@@ -34,11 +34,6 @@ struct Song: Codable, Equatable {
                     .lowercased() == rhs.title.lowercased())
     }
     
-    // Compare stored ID
-//    static func == (lhs: ToDo, rhs: ToDo) -> Bool {
-//        return lhs.id == rhs.id
-//    }
-    
     
     static func loadSongs() -> [Song]? {
         guard let codedSongs = try? Data(contentsOf: archiveURL) else {return nil}
